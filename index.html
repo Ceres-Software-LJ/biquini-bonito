@@ -1191,8 +1191,9 @@ footer {
       });
     });
 
-    /* ── H2 HEADINGS ── word mask reveal */
+    /* ── H2 HEADINGS ── word mask reveal (exclui h2 do CTA, que tem timeline própria) */
     gsap.utils.toArray('h2').forEach(function(h2){
+      if(h2.closest('.cta-fin')) return;
       var words = splitH2(h2);
       if(words && words.length){
         gsap.from(words, { y:'105%', autoAlpha:0, duration:.85, stagger:.07, ease:'expo.out',
@@ -1276,16 +1277,20 @@ footer {
     });
 
     /* ── CTA FINAL ── cinematic timeline */
+    /* Garante que botões e sub partem de estado visível no CSS;
+       GSAP só os anima SE o browser suportar a animação corretamente. */
+    gsap.set('.cta-fin__btns, .cta-fin__sub', { clearProps:'all' });
+
     var ctaTl = gsap.timeline({
       scrollTrigger:{ trigger:'.cta-fin', start:'top 72%', once:true },
-      defaults:{ ease:'expo.out' }
+      defaults:{ ease:'expo.out', immediateRender:false }
     });
     ctaTl
-      .from('.cta-fin .label',      { autoAlpha:0, y:16, duration:.65 })
-      .from('.cta-fin h2',          { autoAlpha:0, y:70, duration:1.1, ease:'power4.out' }, '-=.3')
-      .from('.cta-fin p',           { autoAlpha:0, y:26, duration:.8 }, '-=.5')
-      .from('.cta-fin__btns > *',   { autoAlpha:0, y:22, duration:.6, stagger:.14 }, '-=.4')
-      .from('.cta-fin__sub',        { autoAlpha:0, duration:.5 }, '-=.25');
+      .from('.cta-fin .label',  { autoAlpha:0, y:16, duration:.65 })
+      .from('.cta-fin h2',      { autoAlpha:0, y:70, duration:1.1, ease:'power4.out' }, '-=.3')
+      .from('.cta-fin p',       { autoAlpha:0, y:26, duration:.8 }, '-=.5')
+      .from('.cta-fin__btns',   { autoAlpha:0, y:22, duration:.7 }, '-=.4')
+      .from('.cta-fin__sub',    { autoAlpha:0, duration:.5 }, '-=.3');
 
     /* ── FOOTER ── gentle cascade */
     gsap.utils.toArray('.footer__in > *').forEach(function(col, i){
