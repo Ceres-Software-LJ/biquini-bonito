@@ -1,4 +1,5 @@
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Biquíni Bonito — Moda Praia · Campo Grande, MS</title>
 <meta name="description" content="Biquínis com zero transparência, modelagem inteligente e proteção UV 50+. Todas as avaliações 5★ no Google. Loja física em Campo Grande, MS.">
 <meta property="og:title" content="Biquíni Bonito — Moda Praia">
@@ -626,19 +627,55 @@ footer {
 @keyframes pulse { 0% { opacity:.5; transform:scale(1); } 100% { opacity:0; transform:scale(1.5); } }
 
 /* ─── MOBILE OVERRIDES ───────────────────────────────── */
+@media (max-width: 760px) {
+  /* nav: zera margens negativas, esconde brand no mobile */
+  .nav__logo-link { margin-left: 0; }
+  .nav__right { margin-right: 0; }
+  .nav__brand { display: none; }
+}
+
 @media (max-width: 640px) {
+  /* hero menos alto no mobile */
+  .hero { min-height: 72svh; }
+  .hero__content { min-height: 72svh; padding: 32px 24px 36px; }
+  .hero__h1 { font-size: clamp(2rem, 9vw, 3rem); }
+  .hero__sub { font-size: .95rem; margin-bottom: 1.6rem; }
   .hero__badge { bottom: 16px; right: 16px; padding: .55rem .9rem; }
+
+  /* nav */
+  .nav__wa { padding: .5em 1em; font-size: .68rem; }
+  .nav__logo-img { height: 34px; }
+
+  /* benefits */
+  .benefits__n { font-size: 1.3rem; }
+  .benefits__item { padding: 1.1rem clamp(12px,3vw,20px); }
+
+  /* editorial */
+  .editorial__text { padding: 36px 24px; }
+  .editorial__text h2 { font-size: clamp(1.6rem, 7vw, 2.4rem); }
+  .editorial__text p { font-size: .9rem; }
+  .editorial__stats { gap: 1.4rem; flex-wrap: wrap; }
+
+  /* sobre */
+  .sobre__text { padding: 32px 24px; }
+  .sobre__text h2 { font-size: clamp(1.6rem, 7vw, 2.4rem); }
+
+  /* produtos */
+  .sec-head { padding: 36px 24px 24px; }
+
+  /* depoimentos */
   .dep__mark { font-size: 3.5rem; margin-bottom: 1rem; }
   .dep__card { padding: 32px 0; }
   .dep__quote { font-size: 1rem; }
   .dep__name { font-size: .7rem; }
   .dep__meta { font-size: .65rem; }
+
+  /* localização */
   .loc__block-body { font-size: .9rem; }
   .loc__link { font-size: .72rem; }
-  .nav__wa { padding: .5em 1em; font-size: .68rem; }
-  .nav__logo-img { height: 34px; }
-  .benefits__n { font-size: 1.2rem; }
-  .benefits__item { padding: 1.1rem clamp(12px,3vw,20px); }
+
+  /* faq */
+  .faq__btn { font-size: .95rem; }
 }
 
 /* clip-path elements precisam de will-change para GPU */
