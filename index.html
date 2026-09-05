@@ -649,7 +649,7 @@ footer {
 <!-- HERO -->
 <section class="hero" id="inicio">
   <div class="hero__media">
-    <video autoplay muted loop playsinline preload="metadata">
+    <video autoplay muted loop playsinline preload="auto" poster="amm.jpg">
       <source src="Women_drinking_coconuts_on_beach_202609020732.mp4" type="video/mp4">
     </video>
   </div>
@@ -952,8 +952,8 @@ footer {
 
 <!-- CTA FINAL -->
 <section class="cta-fin">
-  <video class="cta-fin__video" autoplay muted loop playsinline>
-    <source src="Ocean_waves_crashing_on_beach_202609032212.mp4" type="video/mp4">
+  <video class="cta-fin__video" muted loop playsinline preload="none" data-lazy-video>
+    <source data-src="Ocean_waves_crashing_on_beach_202609032212.mp4" type="video/mp4">
   </video>
   <div class="cta-fin__overlay"></div>
   <div class="cta-fin__body">
@@ -1303,5 +1303,26 @@ footer {
     ScrollTrigger.refresh();
   });
 
+})();
+
+/* ── LAZY LOAD vídeos pesados ──────────────────────────── */
+(function(){
+  var lazyVideos = document.querySelectorAll('[data-lazy-video]');
+  if (!lazyVideos.length) return;
+
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (!entry.isIntersecting) return;
+      var video = entry.target;
+      video.querySelectorAll('source[data-src]').forEach(function(source){
+        source.src = source.dataset.src;
+      });
+      video.load();
+      video.play().catch(function(){});
+      observer.unobserve(video);
+    });
+  }, { rootMargin: '200px' });
+
+  lazyVideos.forEach(function(v){ observer.observe(v); });
 })();
 </script>
