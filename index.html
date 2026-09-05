@@ -1249,15 +1249,15 @@ footer {
 
     /* ── SECTION LABELS ── slide + fade (exclui labels dentro de seções com animação própria) */
     gsap.utils.toArray('.label').forEach(function(el){
-      if(el.closest('.dep__head') || el.closest('.sec-head') || el.closest('.cta-fin') || el.closest('.hero__content')) return;
+      if(el.closest('.dep__head') || el.closest('.sec-head') || el.closest('.cta-fin') || el.closest('.hero__content') || el.closest('.sobre__text')) return;
       gsap.from(el, { autoAlpha:0, x:-18, duration:.6, ease:'power3.out',
         scrollTrigger:{ trigger:el, start:'top 90%', once:true }
       });
     });
 
-    /* ── H2 HEADINGS ── word mask reveal (exclui h2 do CTA, que tem timeline própria) */
+    /* ── H2 HEADINGS ── word mask reveal (exclui h2 do CTA e do sobre, que têm timeline própria) */
     gsap.utils.toArray('h2').forEach(function(h2){
-      if(h2.closest('.cta-fin')) return;
+      if(h2.closest('.cta-fin') || h2.closest('.sobre__text')) return;
       var words = splitH2(h2);
       if(words && words.length){
         gsap.from(words, { y:'105%', autoAlpha:0, duration:.85, stagger:.07, ease:'expo.out',
