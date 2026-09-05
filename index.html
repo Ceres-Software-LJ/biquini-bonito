@@ -681,7 +681,7 @@ footer {
 <!-- HERO -->
 <section class="hero" id="inicio">
   <div class="hero__media">
-    <video autoplay muted loop playsinline preload="auto" poster="amm.jpg">
+    <video id="hero-video" autoplay muted loop playsinline preload="auto" style="opacity:0;transition:opacity .4s ease">
       <source src="Women_drinking_coconuts_on_beach_202609020732.mp4" type="video/mp4">
     </video>
   </div>
@@ -1387,6 +1387,17 @@ footer {
     ScrollTrigger.refresh();
   });
 
+})();
+
+/* ── HERO VIDEO: aparece só quando tem frame pronto ───── */
+(function(){
+  var v = document.getElementById('hero-video');
+  if(!v) return;
+  function show(){ v.style.opacity = '1'; }
+  if(v.readyState >= 3){ show(); return; }
+  v.addEventListener('canplay', show, { once: true });
+  /* fallback: se demorar mais de 1.5s mostra assim mesmo */
+  setTimeout(show, 1500);
 })();
 
 /* ── LAZY LOAD vídeos pesados ──────────────────────────── */
