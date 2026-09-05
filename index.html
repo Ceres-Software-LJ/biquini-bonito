@@ -102,11 +102,11 @@ h3 { font-size: clamp(1rem, 2vw, 1.3rem); letter-spacing: .06em; }
 .nav__right a:hover { color: var(--dark); }
 .nav__wa {
   font-size: .62rem; letter-spacing: .15em; text-transform: uppercase;
-  background: var(--dark); color: #fff;
+  background: var(--dark); color: #fff !important;
   padding: .55em 1.4em; border-radius: var(--r);
   transition: background .2s;
 }
-.nav__wa:hover { background: var(--rust); }
+.nav__wa:hover { background: var(--rust); color: #fff !important; }
 .nav__burger { display: none; flex-direction: column; gap: 5px; }
 .nav__burger span { display: block; width: 20px; height: 1px; background: var(--dark); transition: .3s; }
 
