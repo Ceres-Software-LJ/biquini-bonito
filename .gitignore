@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+boilerplate-landing/node_modules/
+
+# Build outputs
+dist/
+.astro/
+boilerplate-landing/dist/
+boilerplate-landing/.astro/
+
+# Zip archives
+*.zip
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.local
