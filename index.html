@@ -339,7 +339,6 @@ h3 { font-size: clamp(1rem, 2vw, 1.3rem); letter-spacing: .06em; }
 @media (min-width: 860px) { .products__grid { grid-template-columns: repeat(3,1fr); } }
 
 /* ─── SOBRE NÓS ──────────────────────────────────────── */
-/* ─── SOBRE NÓS ──────────────────────────────────────── */
 .sobre {
   background: var(--bg);
   display: grid;
@@ -365,45 +364,16 @@ h3 { font-size: clamp(1rem, 2vw, 1.3rem); letter-spacing: .06em; }
   display: block;
 }
 .sobre__mosaic-img:first-child {
-  grid-row: 1 / 4; /* ocupa toda a altura à esquerda */
+  grid-row: 1 / 4;
 }
 .sobre__text {
+  background: var(--bg);
   display: flex; flex-direction: column; justify-content: center;
-  padding: clamp(52px,8vw,96px) clamp(28px,6vw,72px);
+  padding: clamp(48px,7vw,80px) clamp(28px,6vw,64px);
 }
-.sobre__eyebrow {
-  font-size: .65rem; letter-spacing: .22em; text-transform: uppercase;
-  color: var(--soft); margin-bottom: 1.4rem;
-  display: flex; align-items: center; gap: .8rem;
-}
-.sobre__eyebrow::before {
-  content: ''; display: inline-block;
-  width: 28px; height: 1px; background: var(--sand);
-}
-.sobre__title {
-  font-family: var(--ff-serif); font-size: clamp(2rem,4vw,3.2rem);
-  letter-spacing: .04em; color: var(--dark);
-  line-height: 1.1; margin-bottom: 2rem;
-}
-.sobre__title em {
-  font-style: normal; font-family: var(--ff-cursive);
-  font-size: 1.35em; color: var(--gold);
-  display: block; line-height: 1;
-}
-.sobre__body p {
-  font-size: .88rem; color: var(--mid);
-  line-height: 1.85; max-width: 44ch;
-  margin-bottom: 1.2rem;
-}
-.sobre__body p:last-of-type { margin-bottom: 0; }
-.sobre__rule {
-  width: 40px; height: 1px; background: var(--sand);
-  margin: 2rem 0;
-}
-.sobre__info {
-  font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
-  color: var(--soft); line-height: 2;
-}
+.sobre__text .label { margin-bottom: 1.2rem; }
+.sobre__text h2 { color: var(--dark); margin-bottom: 1.2rem; }
+.sobre__text p { font-size: .88rem; color: var(--mid); line-height: 1.8; max-width: 46ch; margin-bottom: 2rem; }
 
 /* ─── DEPOIMENTOS ────────────────────────────────────── */
 .dep {
@@ -869,17 +839,24 @@ footer {
 
   <!-- TEXTO (direita) -->
   <div class="sobre__text">
-    <p class="sobre__eyebrow">Sobre nós</p>
-    <h2 class="sobre__title">Nossa loja,<em>nossa história</em></h2>
-    <div class="sobre__body">
-      <p>A Biquíni Bonito nasceu em Campo Grande com um propósito simples: oferecer moda praia de qualidade real — peças que abraçam, sustentam e fazem você se sentir linda em qualquer praia, em qualquer corpo.</p>
-      <p>Nossa loja física é um espaço pensado para você experimentar com calma, receber indicação personalizada e sair com a peça certa. Do P ao GG Plus, com modelagem inteligente, zero transparência e proteção UV 50+.</p>
+    <span class="label">Sobre nós</span>
+    <h2>Nossa loja,<br>nossa história</h2>
+    <p>A <span class="brand-cursive">Biquíni Bonito</span> nasceu em Campo Grande com um propósito simples: oferecer moda praia de qualidade real — peças que abraçam, sustentam e fazem você se sentir linda em qualquer praia, em qualquer corpo. Do P ao GG Plus, com modelagem inteligente, zero transparência e UV 50+.</p>
+    <div class="editorial__stats">
+      <div class="editorial__stat">
+        <strong>★★★★★</strong>
+        <span>todas 5★ no Google</span>
+      </div>
+      <div class="editorial__stat">
+        <strong>Seg–Sex</strong>
+        <span>11h às 17h</span>
+      </div>
+      <div class="editorial__stat">
+        <strong>Sábado</strong>
+        <span>8h às 13h</span>
+      </div>
     </div>
-    <div class="sobre__rule"></div>
-    <div class="sobre__info">
-      Av. Rodolfo José Pinho, 479 · Campo Grande, MS<br>
-      Seg–Sex · 11h às 17h &nbsp;·&nbsp; Sábado · 8h às 13h
-    </div>
+    <a href="https://wa.me/5567998526738?text=Oi!%20Quero%20conhecer%20a%20loja%20☀️" class="btn btn--outline" target="_blank" rel="noopener">Visitar a loja</a>
   </div>
 
 </section>
