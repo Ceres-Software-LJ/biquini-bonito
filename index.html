@@ -339,6 +339,52 @@ h3 { font-size: clamp(1rem, 2vw, 1.3rem); letter-spacing: .06em; }
 @media (min-width: 500px) { .products__grid { grid-template-columns: repeat(2,1fr); } }
 @media (min-width: 860px) { .products__grid { grid-template-columns: repeat(3,1fr); } }
 
+/* ─── SOBRE NÓS ──────────────────────────────────────── */
+.sobre {
+  background: var(--bg-alt);
+  padding: clamp(72px,10vw,120px) 0;
+  overflow: hidden;
+}
+.sobre__inner {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: clamp(20px,5vw,60px);
+  display: grid;
+  gap: clamp(48px,7vw,80px);
+}
+@media (min-width: 900px) {
+  .sobre__inner { grid-template-columns: 1fr 1fr; align-items: center; }
+}
+.sobre__text .label { margin-bottom: 1.2rem; }
+.sobre__text h2 { color: var(--dark); margin-bottom: 1.2rem; }
+.sobre__text p {
+  font-size: .9rem; color: var(--mid); line-height: 1.85;
+  max-width: 48ch; margin-bottom: 1.4rem;
+}
+.sobre__text p:last-of-type { margin-bottom: 0; }
+.sobre__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 10px;
+}
+.sobre__grid-img {
+  width: 100%; aspect-ratio: 3/4;
+  object-fit: cover; object-position: center;
+  border-radius: 4px;
+  display: block;
+}
+.sobre__grid-img:first-child {
+  grid-row: 1 / 3;
+  aspect-ratio: unset;
+  height: 100%;
+  min-height: 320px;
+}
+@media (max-width: 500px) {
+  .sobre__grid { grid-template-columns: 1fr 1fr; gap: 6px; }
+  .sobre__grid-img:first-child { min-height: 220px; }
+}
+
 /* ─── DEPOIMENTOS ────────────────────────────────────── */
 .dep {
   background: #100C09;
@@ -794,6 +840,30 @@ footer {
   </div>
 </section>
 
+<!-- SOBRE NÓS -->
+<section class="sobre" id="sobre">
+  <div class="sobre__inner">
+
+    <!-- TEXTO -->
+    <div class="sobre__text">
+      <span class="label">Nossa história</span>
+      <h2>Feitas com amor, <em>pensadas pra você</em></h2>
+      <p>A Biquíni Bonito nasceu em Campo Grande com um propósito simples: oferecer moda praia de qualidade real — peças que abraçam, sustentam e fazem você se sentir linda em qualquer praia, em qualquer corpo.</p>
+      <p>Nossa loja física é um espaço pensado para você experimentar com calma, receber indicação personalizada e sair com a peça certa. Aqui você encontra de P ao GG Plus, com modelagem inteligente, zero transparência e proteção UV 50+.</p>
+      <p>Venha nos visitar na <strong>Av. Rodolfo José Pinho, 479 · Campo Grande, MS</strong> — ou fale com a gente pelo WhatsApp.</p>
+    </div>
+
+    <!-- GRADE DE FOTOS -->
+    <div class="sobre__grid">
+      <img class="sobre__grid-img" src="LOJA1FT.webp" alt="Interior da loja Biquíni Bonito" loading="lazy">
+      <img class="sobre__grid-img" src="LOJA2FT.webp" alt="Vitrine da loja Biquíni Bonito" loading="lazy">
+      <img class="sobre__grid-img" src="LOJA3FT.webp" alt="Produtos na loja Biquíni Bonito" loading="lazy">
+      <img class="sobre__grid-img" src="LOJA4FT.webp" alt="Atendimento na loja Biquíni Bonito" loading="lazy">
+    </div>
+
+  </div>
+</section>
+
 <!-- DEPOIMENTOS -->
 <section class="dep" id="depoimentos">
   <div class="dep__head wrap">
@@ -1204,6 +1274,21 @@ footer {
           scrollTrigger:{ trigger:h2, start:'top 87%', once:true }
         });
       }
+    });
+
+    /* ── SOBRE NÓS ── texto slide + fotos stagger */
+    gsap.utils.toArray('.sobre__text > *').forEach(function(el, i){
+      gsap.from(el, { autoAlpha:0, x:-40, duration:.85, ease:'expo.out', delay: i * .12,
+        scrollTrigger:{ trigger:'.sobre', start:'top 76%', once:true }
+      });
+    });
+    gsap.utils.toArray('.sobre__grid-img').forEach(function(img, i){
+      gsap.fromTo(img,
+        { autoAlpha:0, y:50, scale:.96 },
+        { autoAlpha:1, y:0, scale:1, duration:.9, ease:'expo.out', delay: i * .1,
+          scrollTrigger:{ trigger:'.sobre__grid', start:'top 82%', once:true }
+        }
+      );
     });
 
     /* ── EDITORIAL ── clip curtain image + parallax + text slide */
