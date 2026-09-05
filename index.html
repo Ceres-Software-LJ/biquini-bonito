@@ -77,18 +77,21 @@ h3 { font-size: clamp(1rem, 2vw, 1.3rem); letter-spacing: .06em; }
   padding: 0 clamp(20px, 5vw, 60px);
   display: flex; justify-content: space-between;
   align-items: center; height: 64px;
+  position: relative;
 }
 .nav__logo-link {
-  display: flex; align-items: center; gap: .75rem;
-  text-decoration: none;
+  display: flex; align-items: center;
+  text-decoration: none; flex-shrink: 0;
 }
 .nav__logo-img {
   height: 42px; width: auto; display: block;
   object-fit: contain;
 }
 .nav__brand {
+  position: absolute; left: 50%; transform: translateX(-50%);
   font-family: var(--ff-cursive); font-size: 1.7rem; font-weight: 400;
   letter-spacing: .02em; color: var(--dark); line-height: 1;
+  white-space: nowrap; pointer-events: none;
 }
 .nav__right { display: flex; justify-content: flex-end; gap: 1.8rem; align-items: center; }
 .nav__right a {
@@ -121,7 +124,6 @@ h3 { font-size: clamp(1rem, 2vw, 1.3rem); letter-spacing: .06em; }
 .nav__mob a:hover { color: var(--dark); }
 
 @media (max-width: 760px) {
-  .nav__brand { display: none; }
   .nav__burger { display: flex; }
   /* hide text links, keep wa + burger */
   .nav__right > a:not(.nav__wa) { display: none; }
@@ -649,11 +651,12 @@ footer {
 <!-- NAV -->
 <nav class="nav" id="nav">
   <div class="nav__row">
-    <!-- logo + marca juntos à esquerda -->
+    <!-- logo esquerda -->
     <a href="#inicio" class="nav__logo-link" aria-label="Biquíni Bonito — início">
       <img src="amm.jpg" alt="" class="nav__logo-img">
-      <span class="nav__brand">Biquíni Bonito</span>
     </a>
+    <!-- marca centro -->
+    <span class="nav__brand" aria-hidden="true">Biquíni Bonito</span>
     <!-- links direita -->
     <div class="nav__right">
       <a href="#colecao">Coleção</a>
